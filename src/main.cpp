@@ -1,12 +1,10 @@
 #include <raylib-cpp.hpp>
+#include "targetPractise.hpp" 
 
 int main() {
     /* -------------------------------------------------------------------------- */
     /*                               Initialization                               */
     /* -------------------------------------------------------------------------- */
-    const int screenWidth = 1920;
-    const int screenHeight = 1080;
-
     // Define the camera to look into our 3d world
     Camera3D camera = { 0 };
     camera.position = (Vector3){ 0.0f, 1.0f, 0.00000001f };     // Camera position
@@ -20,7 +18,7 @@ int main() {
 
     // Create the program window
     raylib::Color textColor(GREEN);
-    raylib::Window w(screenWidth, screenHeight, "");
+    raylib::Window w(SCREENWIDTH, SCREENHEIGHT, "");
     
     DisableCursor();
     SetTargetFPS(360);
