@@ -2,9 +2,8 @@
 #include "targetPractise.hpp" 
 
 int main() {
-    /* -------------------------------------------------------------------------- */
-    /*                               Initialization                               */
-    /* -------------------------------------------------------------------------- */
+    // Initialization
+    //----------------
     // Define the camera to look into our 3d world
     Camera3D camera = { 0 };
     camera.position = (Vector3){ 0.0f, 1.0f, 0.00000001f };     // Camera position
@@ -23,12 +22,11 @@ int main() {
     DisableCursor();
     SetTargetFPS(360);
 
-    /* -------------------------------------------------------------------------- */
-    /*                              Main program loop                             */
-    /* -------------------------------------------------------------------------- */
+    // Main program loop
+    //-------------------
     while (!w.ShouldClose()) // Detect window close button or ESC key
     {
-        // Update
+        // TODO: MOVE TO PLAYER CLASS
         // Camera controls and movement
         UpdateCameraPro(&camera, 
             (Vector3){0.0f, 0.0f, 0.0f},
@@ -43,14 +41,18 @@ int main() {
         BeginDrawing();
 
             ClearBackground(RAYWHITE);
-
-            // 3D things
             BeginMode3D(camera);
+                
+                /* 3D Drawing */
 
+                // TODO: MOVE TO LEVEL 1
                 DrawGrid(100, 1.0f);
 
             EndMode3D();
 
+            /* 2D Drawing */
+
+            // TODO: MOVE INFO BOXES TO GUI RELATED CLASSES 
             // Draw camera info box
             DrawRectangle(15, 5, 195, 75, Fade(SKYBLUE, 0.5f));
             DrawRectangleLines(15, 5, 195, 75, BLUE);
@@ -63,9 +65,8 @@ int main() {
         EndDrawing();
     }
 
-    /* -------------------------------------------------------------------------- */
-    /*                              De-Initialization                             */
-    /* -------------------------------------------------------------------------- */
+    // De-Initialization
+    //-------------------
     CloseWindow(); // Close window and OpenGL context
 
     return 0;
