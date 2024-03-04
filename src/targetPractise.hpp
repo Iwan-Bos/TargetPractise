@@ -1,7 +1,12 @@
-#ifndef MY_CLASS_H // Duplicate guard
-#define MY_CLASS_H
+// targetPractise.hpp
+#ifndef TARGETPRACTISE_H
+#define TARGETPRACTISE_H
 
+class TargetPractise {
 #define SCREENWIDTH 1920
 #define SCREENHEIGHT 1080
+private:
+public:
+};
 
 #endif
