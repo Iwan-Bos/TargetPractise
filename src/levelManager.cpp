@@ -3,11 +3,6 @@
 #include "targetPractise.hpp"
 #include "levelManager.hpp"
 
-class LevelManager
-{
-
-};
-
 LevelManager::LevelManager(/* args */)
 {
 }

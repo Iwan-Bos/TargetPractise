@@ -3,11 +3,6 @@
 #include "targetPractise.hpp"
 #include "player.hpp"
 
-class Player
-{
-
-};
-
 Player::Player(/* args */)
 {
 }
