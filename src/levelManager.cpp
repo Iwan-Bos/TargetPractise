@@ -3,10 +3,18 @@
 #include "targetPractise.hpp"
 #include "levelManager.hpp"
 
-LevelManager::LevelManager(/* args */)
+LevelManager::LevelManager()
 {
+    player = new Player;
 }
 
 LevelManager::~LevelManager()
 {
+    delete player;
+}
+
+void LevelManager::Update() 
+{
+    // update player
+    this->player->Update();
 }

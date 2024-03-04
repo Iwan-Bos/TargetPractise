@@ -3,11 +3,15 @@
 #include "targetPractise.hpp"
 #include "player.hpp"
 
-Player::Player(/* args */)
+Player::Player()
 {
+
 }
 
 Player::~Player()
 {
 }
 
+void Player::Update() 
+{
+}

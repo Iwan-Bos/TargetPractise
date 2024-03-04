@@ -1,8 +1,11 @@
+#include "player.hpp"
+
 class LevelManager
 {
 private:
-    /* data */
+    Player * player;
 public:
-    LevelManager(/* args */);
+    LevelManager();
     ~LevelManager();
+    void Update();
 };
