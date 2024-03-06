@@ -8,4 +8,5 @@ public:
     LevelManager();
     ~LevelManager();
     void Update();
+    Camera3D GetCamera();
 };

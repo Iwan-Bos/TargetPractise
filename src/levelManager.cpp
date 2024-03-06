@@ -18,3 +18,8 @@ void LevelManager::Update()
     // update player
     this->player->Update();
 }
+
+Camera3D LevelManager::GetCamera()
+{
+    return player->camera;
+}

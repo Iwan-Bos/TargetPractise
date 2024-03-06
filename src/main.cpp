@@ -10,14 +10,9 @@ int main() {
 
     // Construct LevelManager
     LevelManager lMnger;
+    Camera3D camera;
 
-    // Define the camera to look into our 3d world
-    Camera3D camera = { 0 };
-    camera.position = (Vector3){ 0.0f, 1.0f, 0.00000001f };     // Camera position
-    camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };              // Camera looking at point
-    camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };                  // Camera up vector (rotation towards target)
-    camera.fovy = 110.0f;                                       // Camera field-of-view Y
-    camera.projection = CAMERA_PERSPECTIVE;                     // Camera mode type
+    // camera
 
     // Create the program window
     raylib::Color textColor(GREEN);
@@ -32,17 +27,7 @@ int main() {
     {
         /* Update */
         lMnger.Update();
-
-        // Camera controls and movement
-        UpdateCameraPro(&camera, 
-            (Vector3){0.0f, 0.0f, 0.0f},
-            (Vector3){
-                GetMouseDelta().x*0.05f,    // yaw
-                GetMouseDelta().y*0.05f,    // pitch
-                0.0f                        // roll
-            },
-            0.0f                            // zoom
-        );
+        camera = lMnger.GetCamera();
         
         /* Draw */
         BeginDrawing();
