@@ -10,7 +10,7 @@ Player::Player()
     camera.position = (Vector3){ 0.0f, 1.0f, 0.00000001f };     // Camera position
     camera.target = (Vector3){ 0.0f, 0.0f, 0.0f };              // Camera looking at point
     camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };                  // Camera up vector (rotation towards target)
-    camera.fovy = 110.0f;                                       // Camera field-of-view Y
+    camera.fovy = 70.0f;                                       // Camera field-of-view Y
     camera.projection = CAMERA_PERSPECTIVE;                     // Camera mode type
 }
 
