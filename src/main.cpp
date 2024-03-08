@@ -9,7 +9,7 @@ int main() {
     Vector3 cubePos = { 0.0f, 0.0f, 0.0f };
 
     // Construct LevelManager
-    LevelManager lMnger;
+    LevelManager levelManager;
     Camera3D camera;
 
     // camera
@@ -26,8 +26,7 @@ int main() {
     while (!w.ShouldClose()) // Detect window close button or ESC key
     {
         /* Update */
-        lMnger.Update();
-        camera = lMnger.GetCamera();
+        camera = levelManager.GetCamera();
         
         /* Draw */
         BeginDrawing();
@@ -36,9 +35,7 @@ int main() {
             BeginMode3D(camera);
                 
                 /* 3D Drawing */
-                
-                // TODO: MOVE TO LEVEL 1
-                DrawGrid(20, 1.0f);
+                levelManager.Update();
 
             EndMode3D();
 
