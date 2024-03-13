@@ -1,14 +1,13 @@
 #include "player.hpp"
-#include "level.hpp"
+#include "target.hpp"
 
 class LevelManager
 {
 private:
     Player * player;
-    Level * level1;
-    Level levels[1];
+    Target * target0;
 public:
-    LevelManager();
+    LevelManager(Model modelTarget);
     ~LevelManager();
     void Update();
     Camera3D GetCamera();

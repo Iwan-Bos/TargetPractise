@@ -3,33 +3,23 @@
 #include "targetPractise.hpp"
 #include "levelManager.hpp"
 
-LevelManager::LevelManager()
+LevelManager::LevelManager(Model modelTarget)
 {
-    player = new Player;
-    level1 = new Level;
-    levels[1] = {*level1};
+    player = new Player();
+    target0 = new Target(modelTarget); // TODO: ADD SOMETHING TO ADDS TARGETS DYNAMICALLY 
 }
 
 LevelManager::~LevelManager()
 {
     delete player;
-    // TODO: DELETE LIST AND ALL ELEMENTS INSIDE IT
+    delete target0; // TODO: ADD SOMETHING TO DELETE TARGETS DYNAMICALLY
 }
 
 void LevelManager::Update() 
 {
-    this->player->Update(); // update player
-    for (int i = 0; i < sizeof levels / sizeof levels[0]; i++)
-    {
-        try
-        {
-            levels[i].Update(); // update levels    
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << '\n';
-        }
-    }
+    this->player->Update();
+    this->target0->Update((Vector3){10,0,0}); // TODO: POSITION HERE I NONO WANNA
+    DrawGrid(10, 0.5);
 }
 
 Camera3D LevelManager::GetCamera()

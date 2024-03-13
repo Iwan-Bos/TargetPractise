@@ -5,21 +5,21 @@
 int main() {
     // Initialization
     //----------------
-    // Set starting positions
-    Vector3 cubePos = { 0.0f, 0.0f, 0.0f };
-
-    // Construct LevelManager
-    LevelManager levelManager;
-    Camera3D camera;
-
-    // camera
-
     // Create the program window
     raylib::Color textColor(GREEN);
     raylib::Window w(SCREENWIDTH, SCREENHEIGHT, "");
-    
+    raylib::InitWindow(SCREENWIDTH, SCREENHEIGHT, "Target Practise");
     DisableCursor();
     SetTargetFPS(360);
+
+    // Load models
+    Model modelTarget = LoadModel("/home/iwan/Documents/1_REPOSITORIES/TargetPractise/assets/models/target.obj");
+    Texture2D texture = LoadTexture("/home/iwan/Documents/1_REPOSITORIES/TargetPractise/assets/models/target.png");
+    modelTarget.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture;
+    
+    // 
+    LevelManager levelManager(modelTarget);
+    Camera3D camera;
 
     // Main program loop
     //-------------------

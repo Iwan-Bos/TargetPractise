@@ -1,9 +1,10 @@
-#include "entity.hpp"
-
 class Target
 {
 private:
+    Model model;
+    Vector3 position;
 public:
-    Target(Vector3 position);
+    Target(Model modelTarget);
     ~Target();
+    void Update(Vector3 modelPosition);
 };
