@@ -20,5 +20,5 @@ void Target::Update(Vector3 modelPosition)
 
     // draw model
     DrawModel(model, position, 1, WHITE);
-    DrawModelWires(model, position, 1, GREEN);
+    DrawModelWires(model, position, 1, WHITE);
 }
