@@ -7,55 +7,53 @@ int main() {
     //----------------
     // Create the program window
     raylib::Color textColor(GREEN);
-    raylib::Window w(SCREENWIDTH, SCREENHEIGHT, "");
-    raylib::InitWindow(SCREENWIDTH, SCREENHEIGHT, "Target Practise");
+    raylib::Window w(SCREENWIDTH, SCREENHEIGHT, "Target Practise");
     DisableCursor();
     SetTargetFPS(360);
 
     // Load models
-    Model modelTarget = LoadModel("/home/iwan/Documents/1_REPOSITORIES/TargetPractise/assets/models/target.obj");
-    Texture2D texture = LoadTexture("/home/iwan/Documents/1_REPOSITORIES/TargetPractise/assets/models/target.png");
-    modelTarget.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture;
+    Model modelTarget = LoadModel("./assets/models/target.obj");                // Load target model
+    Texture2D texture = LoadTexture("./assets/models/target.png");              // Load target texture
+    modelTarget.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture;      // Assign target texture to model
     
-    // 
-    LevelManager levelManager(modelTarget);
+    Model modelShuriken = LoadModel("./assets/models/shuriken.obj");            // Load shuriken model
+    texture = LoadTexture("./assets/models/shuriken.png");            // Load shuriken texture
+    modelShuriken.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture;    // Assign shuriken texture to model
+
+    LevelManager levelManager(modelTarget, modelShuriken); // make a new instance of levelmanager
     Camera3D camera;
 
     // Main program loop
     //-------------------
-    while (!w.ShouldClose()) // Detect window close button or ESC key
+    while (!w.ShouldClose())    // Detect window close button or ESC key
     {
-        /* Update */
-        camera = levelManager.GetCamera();
-        
-        /* Draw */
-        BeginDrawing();
+        camera = levelManager.GetCamera();  // Get the camera in order to start 3D mode   
+        BeginDrawing();                     // Raylib draw start
 
-            ClearBackground(RAYWHITE);
-            BeginMode3D(camera);
-                
-                /* 3D Drawing */
-                levelManager.Update();
+            ClearBackground(RAYWHITE);  // clear frame
 
-            EndMode3D();
+            BeginMode3D(camera);        // enter 3D mode
+            levelManager.Update();      // Update/Draw 3D related objects
+            EndMode3D();                // exit 3D mode
 
-            /* 2D Drawing */
-            // TODO: MOVE INFO BOXES TO GUI RELATED CLASSES 
-            // Draw camera info box
-            DrawRectangle(15, 5, 195, 75, Fade(SKYBLUE, 0.5f));
-            DrawRectangleLines(15, 5, 195, 75, BLUE);
+            levelManager.DrawUI();      // Update/Draw 2D related objects
 
+            DrawCircle(SCREENWIDTH/2, SCREENHEIGHT/2, 10.0f, Fade(BLACK, 0.9f)); // Draw crosshair 
+            
+            // TODO: MOVE vvTHISvv DEBUG INFO TO ANOTHER CLASS 
+            DrawRectangle(15, 5, 195, 75, Fade(SKYBLUE, 0.5f)); // Draw camera info box
+            DrawRectangleLines(15, 5, 195, 75, BLUE);           // Draw info box outline
             DrawText("Camera status:", 25, 15, 10, BLACK);
             DrawText(TextFormat("- Position: (%06.3f, %06.3f, %06.3f)", camera.position.x, camera.position.y, camera.position.z), 25, 30, 10, BLACK);
             DrawText(TextFormat("- Target: (%06.3f, %06.3f, %06.3f)", camera.target.x, camera.target.y, camera.target.z), 25, 45, 10, BLACK);
-            DrawText(TextFormat("- Up: (%06.3f, %06.3f, %06.3f)", camera.up.x, camera.up.y, camera.up.z), 25, 60, 10, BLACK);
+            
 
-        EndDrawing();
+        EndDrawing();   // Raylib draw end
     }
 
     // De-Initialization
     //-------------------
-    CloseWindow(); // Close window and OpenGL context
+    CloseWindow();  // Close window and OpenGL context
 
     return 0;
 }
