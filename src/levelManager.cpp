@@ -18,7 +18,7 @@ LevelManager::~LevelManager()
 void LevelManager::Update() 
 {
     this->player->Update();
-    this->target0->Update((Vector3){10,1,0}); // TODO: MOVE WHERE THE POSITION IS ENTERED
+    this->target0->Update((Vector3){3,1,0}); // TODO: MOVE WHERE THE POSITION IS ENTERED
     DrawGrid(10, 0.5);
 }
 
