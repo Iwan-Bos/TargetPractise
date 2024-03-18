@@ -26,7 +26,6 @@ void Shuriken::Update()
     acc = 0;                             // Reset acceleration for next run
 
     /* Drawing */
-    // DrawCubeV(pos, (Vector3){.1,.1,.1}, RED);
     DrawModel(model, pos, 1.0f, WHITE);
 }
 
