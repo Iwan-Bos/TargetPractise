@@ -19,11 +19,12 @@ Shuriken::~Shuriken()
 void Shuriken::Update()
 {
     /* Movement calculation */
-    float deltaTime = GetFrameTime();    // Get deltaTime
-    acc -= (Vector3){0,1,0};             // Apply gravity to the shuriken
-    vel += acc * deltaTime;              // Compute velocity based on acceleration
-    pos += vel * deltaTime;              // Compute new position based on velocity
-    acc = 0;                             // Reset acceleration for next run
+    float deltaTime = GetFrameTime();   // Get deltaTime
+    acc -= (Vector3){0,.98,0};          // Apply gravity to the shuriken
+    acc -= vel / 3 * 2 ;                // Apply drag to the shuriken 
+    vel += acc * deltaTime;             // Compute velocity based on acceleration
+    pos += vel * deltaTime;             // Compute new position based on velocity
+    acc = 0;                            // Reset acceleration for next run
 
     /* Drawing */
     DrawModel(model, pos, 1.0f, WHITE);
