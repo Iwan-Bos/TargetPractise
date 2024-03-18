@@ -17,7 +17,7 @@ int main() {
     modelTarget.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture;      // Assign target texture to model
     
     Model modelShuriken = LoadModel("./assets/models/shuriken.obj");            // Load shuriken model
-    texture = LoadTexture("./assets/models/shuriken.png");            // Load shuriken texture
+    texture = LoadTexture("./assets/models/shuriken.png");                      // Load shuriken texture
     modelShuriken.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture;    // Assign shuriken texture to model
 
     LevelManager levelManager(modelTarget, modelShuriken); // make a new instance of levelmanager
@@ -38,7 +38,7 @@ int main() {
 
             levelManager.DrawUI();      // Update/Draw 2D related objects
 
-            DrawCircle(SCREENWIDTH/2, SCREENHEIGHT/2, 10.0f, Fade(BLACK, 0.9f)); // Draw crosshair 
+            DrawCircle(SCREENWIDTH/2, SCREENHEIGHT/2, 3.0f, Fade(BLACK, 0.9f)); // Draw crosshair 
             
             // TODO: MOVE vvTHISvv DEBUG INFO TO ANOTHER CLASS 
             DrawRectangle(15, 5, 195, 75, Fade(SKYBLUE, 0.5f)); // Draw camera info box
