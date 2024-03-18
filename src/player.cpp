@@ -39,7 +39,7 @@ void Player::Update()
     // Shooting controls
     if (IsMouseButtonPressed(0))    // Check if left mouse button has been pressed once
     {
-        initVel = (raylib::Vector3){camera.target.x, camera.target.y - camera.position.y, camera.target.z}.Normalize() * 1.0f;
+        initVel = (raylib::Vector3){camera.target.x, camera.target.y - camera.position.y, camera.target.z}.Normalize() * 10.0f; // << Shuriken velocity multiplier
         Shuriken * proj = new Shuriken(initVel, shurikenModel);   // Construct a new shuriken
         shurikens.push_back(proj);          // Add the shuriken to the shuriken list
     }
