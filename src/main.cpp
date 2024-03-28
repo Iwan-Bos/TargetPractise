@@ -12,16 +12,18 @@ int main() {
     SetTargetFPS(360);
 
     // Load models
+    // Target
     Model modelTarget = LoadModel("./assets/models/target.obj");                // Load target model
     Texture2D texture = LoadTexture("./assets/models/target.png");              // Load target texture
     modelTarget.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture;      // Assign target texture to model
-    
+    // Shuriken
     Model modelShuriken = LoadModel("./assets/models/shuriken.obj");            // Load shuriken model
     texture = LoadTexture("./assets/models/shuriken.png");                      // Load shuriken texture
     modelShuriken.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = texture;    // Assign shuriken texture to model
 
+    
     LevelManager levelManager(modelTarget, modelShuriken); // make a new instance of levelmanager
-    Camera3D camera;
+    Camera3D camera; // Define camera
 
     // Main program loop
     //-------------------
@@ -53,7 +55,11 @@ int main() {
 
     // De-Initialization
     //-------------------
-    CloseWindow();  // Close window and OpenGL context
+    // Unload models from memory (RAM and/or VRAM)
+    UnloadModel(modelTarget);
+    UnloadModel(modelShuriken);
+    // Close window and OpenGL context
+    CloseWindow();  
 
     return 0;
 }

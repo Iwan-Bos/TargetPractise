@@ -1,9 +1,12 @@
 #include <raylib-cpp.hpp>
+#include <iostream>
 #include "targetPractise.hpp"
 #include "player.hpp"
 
 Player::Player(Model modelShuriken)
 {
+    if (DEBUG) { std::cout << "DEBUG: player: constructor called" << "\n"; };
+
     // Hand model to shuriken constructor
     shurikenModel = modelShuriken;
 
@@ -18,9 +21,11 @@ Player::Player(Model modelShuriken)
 
 Player::~Player()
 {
-    // TODO: DELETE ALL ACTIVE SHURIKEN IN LIST SHURIKENS HERE
+    if (DEBUG) { std::cout << "DEBUG: player: deconstructor called" << "\n"; };
+    // TODO: DELETE ALL ACTIVE SHURIKEN IN LIST SHURIKENS HERE (if there isn't another class doing this)
 }
 
+// updates player, contains player controls 
 void Player::Update() 
 {
     // Controls
@@ -49,17 +54,19 @@ void Player::Update()
         Shuriken * proj = new Shuriken(initVel, shurikenModel); // Construct a new shuriken
         shurikens.push_back(proj);  // Add the shuriken to the shuriken list
     }
-
-    // Update
-    //========
-    // Update each shuriken
-    for (Shuriken* i : shurikens)
-    {   
-        i->Update();
-    }
 }
 
+// returns the current list of shurikens from player
+std::list<Shuriken*>& Player::GetShurikenList()
+{
+    return shurikens;
+}
+void Player::SetShurikenList(std::list<Shuriken*> alteredShurikens)
+{
+    shurikens = alteredShurikens;
+}
+// Draw 2D Elements
 void Player::DrawUI()
 {
-    for (Shuriken* i : shurikens) { i->DrawUI(); };
+    for (Shuriken* i : shurikens) { i->DrawUI(); }; // call DrawUI for each shuriken
 }
